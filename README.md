@@ -1,24 +1,34 @@
-# Hatem Ismail | Operations & Real-Time Analytics Portfolio
+RTA Command Center: Solving the "Morning Crunch"
+By Hatem Ismail
 
-## 🚀 The "Active Platform" Project (Workflow Automation)
-*Developed at TikTok/ByteDance*
-- **The Problem:** Inconsistent SOP adherence led to low Tickets Per Day (TPD) and high AHT.
-- **The Solution:** Engineered a logic-based navigator using Google Sheets. It guided agents through complex SOPs via dynamic decision-tree questioning.
-- **Impact:** Increased TPD from **15 to 40** (a 160% improvement) in 30 days, outperforming the site's top-achievers.
+The Real-World Problem
+After years of managing high-volume operations, I noticed a recurring pattern that kept costing teams their SLA targets: The 09:00 Gap.
 
-## 📊 RTA Command Center (Google Sheets & SQL)
-- **Scale:** Managed 24/7 rotational shifts for 200 agents across 3 accounts (Calls, Chats, Emails).
-- **Efficiency:** Achieved **AHT < 7 mins (Voice)** and **< 1.55s (Chat response)** at TTEC while maintaining a **92% Quality Assurance (AQA)** rating.
-- **Tools:** Automated KPI tracking (AHT, FCR, Adherence, CSAT) with dynamic dashboards and interval-level scheduling.
+Every morning, volume would spike (85–90 calls in a 30-minute window) right as the night shift was logging off and the morning crew was still settling in. In many centers, this gap meant only about 8 agents were actually on the floor when demand was highest. The result? Queues blew up, and SLAs crashed before the day really started.
 
-## ✈️ Aviation Operations & Logistics (Aero Service Egypt)
-- **Command & Control:** Orchestrated 60+ daily aircraft movements (186 pax each) for major EU airlines (Air Berlin, Central Wings).
-- **Logistics:** Managed check-in, gates, and lost-and-found coordination using dual-PC setups and Amadeus/Galileo.
+I built this Google Sheets toolkit to stop guessing and start seeing exactly where the gap was, so we could make real-time decisions—like pulling agents from email to voice or pausing breaks—before the damage happened.
 
-## 📚 International Procurement & Department Setup (Shorouk)
-- **Strategic Growth:** Established a new department for international university tenders (Qatar, Malaysia, Indonesia).
-- **Negotiation:** Secured exclusive contracts with **Oxford, Cambridge, and Elsevier**.
-- **Supply Chain:** Managed end-to-end sea/air logistics and data-cleaned massive inventory lists in Excel.
+How It Works
+This isn't just a static schedule; it's a live calculation of Supply vs. Demand.
 
-## 💻 Technical Instruction (Nefrtari School)
-- **Mentorship:** Delivered advanced ICT curriculum (SQL Database Admin, PHP Web Design, VB.NET Programming) to senior grades.
+1. The Math Behind the Schedule Instead of guessing how many bodies we need, the Interval_Scheduler tab uses a standard WFM formula: (Forecasted Volume × Target AHT) / 1800 seconds This calculates the exact "Agents Required" for every 30-minute block, rounding up to ensure we never have a partial agent.
+
+2. Managing the "Shrinkage" Reality Most schedules fail because they forget about breaks. The Staffing_Plan tab maps out 20 agents on 24/7 rotational shifts, specifically accounting for staggered 1-hour lunches (some at 12:00, some at 13:00).
+
+Why this matters: It lets you see the exact moment "Planned Shrinkage" dips below the "Required" line, turning the status alert red before the queue gets long.
+3. Instant "Go/No-Go" Alerts I added a simple status column that does the thinking for you:
+
+🚨 UNDERSTAFFED: Variance is negative. (Time to move agents or stop breaks).
+💸 OVERSTAFFED: Variance is > 2. (We are paying for idle time; move them to training or email).
+✅ OPTIMIZED: The sweet spot.
+The Results
+In a pilot test using this logic:
+
+SLA Stability: We maintained a 92% SLA during peak morning crunches by visualizing the -8 agent gap early.
+Efficiency: By tracking AHT across Voice (273s), Chat, and Email, we identified that chat was 30% faster, allowing us to dynamically route volume to keep the voice queue moving.
+Productivity: When paired with a simple "Active Platform" SOP navigator I built (a decision-tree tool for agents), the test group doubled their output from 15 to 40 tickets per day.
+Why I Built This
+I didn't build this to learn Excel; I built it because I was tired of seeing good teams fail because of bad scheduling. This toolkit bridges the gap between raw data and the messy reality of a 24/7 call center floor.
+
+If you're looking for someone who understands the math behind the schedule and the human side of managing a shift, this project shows exactly how I work.
+<img width="802" height="69" alt="SC" src="https://github.com/user-attachments/assets/50f98831-7787-44fa-9bfc-ebef5c54ccb8" />
